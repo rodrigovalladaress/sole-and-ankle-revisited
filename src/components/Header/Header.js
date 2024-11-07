@@ -1,10 +1,13 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import Logo from '../Logo';
-import SuperHeader from '../SuperHeader';
-import MobileMenu from '../MobileMenu';
+import { COLORS, QUERIES, WEIGHTS } from "../../constants";
+import Logo from "../Logo";
+import SuperHeader from "../SuperHeader";
+import MobileMenu from "../MobileMenu";
+import Icon from "../Icon";
+import UnstyledButton from "../UnstyledButton";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -32,6 +35,30 @@ const Header = () => {
         <Side />
       </MainHeader>
 
+      <MobileHeader>
+        <MarginRightAuto>
+          <Logo />
+        </MarginRightAuto>
+
+        <UnstyledButton>
+          <Icon id="shopping-bag"></Icon>
+
+          <VisuallyHidden>Open cart</VisuallyHidden>
+        </UnstyledButton>
+
+        <UnstyledButton>
+          <Icon id="search"></Icon>
+
+          <VisuallyHidden>Search</VisuallyHidden>
+        </UnstyledButton>
+
+        <UnstyledButton onClick={() => setShowMobileMenu(true)}>
+          <Icon id="menu"></Icon>
+
+          <VisuallyHidden>Open menu</VisuallyHidden>
+        </UnstyledButton>
+      </MobileHeader>
+
       <MobileMenu
         isOpen={showMobileMenu}
         onDismiss={() => setShowMobileMenu(false)}
@@ -40,12 +67,45 @@ const Header = () => {
   );
 };
 
-const MainHeader = styled.div`
+const HeaderBase = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+`;
+
+const MainHeader = styled(HeaderBase)`
+  @media ${QUERIES.tabletAndSmaller} {
+    display: none;
+  }
+`;
+
+const MobileHeader = styled(HeaderBase)`
+  @media ${QUERIES.laptopAndSmaller} {
+    display: none;
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: flex;
+    gap: 2.125rem;
+  }
+
+  @media ${QUERIES.phoneAndSmaller} {
+    display: flex;
+    gap: 1.063rem;
+    padding-inline: 16px;
+  }
+`;
+
+const MarginRightAuto = styled.div`
+  margin-inline-end: auto;
+`;
+
+const MenuButton = styled.button`
+  border: none;
+  margin: 0;
+  background: none;
 `;
 
 const Nav = styled.nav`
