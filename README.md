@@ -10,7 +10,7 @@ In this workshop, we'll make this application responsive, so that it looks great
 
 The design can be found on Figma:
 
-- https://www.figma.com/file/kAL3AumTUV11y1IqHhltB6/Sole-and-Ankle-%E2%80%94-Mockup
+- https://www.figma.com/design/xHTJMo9PxewfT6A12ZDpPw/Sole%26Ankle-%E2%80%94-Mockup-(Copy)?node-id=0-1&node-type=canvas&t=9yJcl267GjR7wvGf-0
 
 We'll use a **desktop-first** approach for this process, and our breakpoints will be set as follows:
 
